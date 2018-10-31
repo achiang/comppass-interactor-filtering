@@ -32,5 +32,7 @@ def filter_bait(input_, wd_percentile, z_percentile, out=None):
         frames.append(_filter_and_join(g, wd_percentile, z_percentile))
 
     merged = pd.concat(frames)
-    out_name = path.splitext(input_)[0] + "_filtered.csv"
+    out_name = path.splitext(input_)[0] + "_wd{}_z{}.csv".format(
+        str(wd_percentile), str(z_percentile)
+    )
     merged.to_csv(out_name)
